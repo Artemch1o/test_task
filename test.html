@@ -1,38 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<div id="search_form" class="search-wrapper __main">
-  <div class="search-form">
-      <input type="text" name="filter_name" value="{{ search }}" placeholder="{{ text_search }}" class="form-control" />
-      <div class="actions">
-        <div class="clear" style="display: none;"><svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.06152 4.01477L12.5468 12.5001" stroke="#333333"/><path d="M4.06152 12.5L12.5468 4.01472" stroke="#333333"/></svg></div>
-        <div class="go"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none"><path d="M11.0615 19C15.4798 19 19.0615 15.4183 19.0615 11C19.0615 6.58172 15.4798 3 11.0615 3C6.64325 3 3.06152 6.58172 3.06152 11C3.06152 15.4183 6.64325 19 11.0615 19Z" stroke="#979797" stroke-linecap="round" stroke-linejoin="round"/><path d="M21.0615 21L16.7615 16.7" stroke="#979797" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="search_form" class="search-wrapper __main">
+        <div class="search-form">
+            <input type="text" name="filter_name" value="{{ search }}" placeholder="{{ text_search }}"
+                class="form-control" />
+            <div class="actions">
+                <div class="clear" style="display: none; width: 17px; height: 16px;"><svg width="17" height="16"
+                        viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.06152 4.01477L12.5468 12.5001" stroke="#333333" />
+                        <path d="M4.06152 12.5L12.5468 4.01472" stroke="#333333" />
+                    </svg></div>
+                <div class="go" style="width: 25px; height: 24px;"><svg xmlns="http://www.w3.org/2000/svg" width="25"
+                        height="24" viewBox="0 0 25 24" fill="none">
+                        <path
+                            d="M11.0615 19C15.4798 19 19.0615 15.4183 19.0615 11C19.0615 6.58172 15.4798 3 11.0615 3C6.64325 3 3.06152 6.58172 3.06152 11C3.06152 15.4183 6.64325 19 11.0615 19Z"
+                            stroke="#979797" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M21.0615 21L16.7615 16.7" stroke="#979797" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg></div>
+            </div>
         </div>
-  </div>
-  <div class="results-wrapper"></div>
-</div>
-<script type="text/javascript">
-    $(document).delegate('#search_form input[name=\'filter_name\']', 'keyup', function(e) {
-        $.ajax({
-            url: 'index.php?route=common/search/results',
-            type: 'post',
-            data: $('#search_form input[type=\'text\'], #search_form input[type=\'hidden\'], #search_form input[type=\'radio\']:checked'),
-            dataType: 'json',
-            beforeSend: function() {
-            
-            },
-            complete: function() {
-            
-            },
-            success: function(json) {
-                if (json['products']) {
-                    for (i = 0; i < json['products'].length; i++) {
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
+        <div class="results-wrapper"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).delegate('#search_form input[name=\'filter_name\']', 'keyup', function (e) {
+            $.ajax({
+                url: 'index.php?route=common/search/results',
+                type: 'post',
+                data: $('#search_form input[type=\'text\'], #search_form input[type=\'hidden\'], #search_form input[type=\'radio\']:checked'),
+                dataType: 'json',
+                beforeSend: function () {
+
+                },
+                complete: function () {
+
+                },
+                success: function (json) {
+                    if (json['products']) {
+                        for (i = 0; i < json['products'].length; i++) {
+
+                        }
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+            });
         });
-    });
-</script>
+    </script>
+    <script src="script.js"></script>
+</body>
 
-
-
-
+</html>
